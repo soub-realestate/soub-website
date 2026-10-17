@@ -1,0 +1,183 @@
+media:
+  input: media
+  output: /media
+  rename: safe
+content:
+  - name: website
+    label: إدارة موقع صوب العقارية
+    type: file
+    path: data/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: site_title
+        label: اسم الموقع
+        type: string
+      - name: site_description
+        label: وصف الموقع لمحركات البحث
+        type: text
+      - name: hero
+        label: الواجهة الرئيسية
+        type: object
+        fields:
+          - name: eyebrow
+            label: اسم الشركة أعلى العنوان
+            type: string
+          - name: heading
+            label: العنوان الرئيسي
+            type: string
+          - name: description
+            label: النص التعريفي
+            type: text
+          - name: button_text
+            label: نص زر واتساب
+            type: string
+          - name: button_message
+            label: رسالة واتساب الجاهزة
+            type: text
+          - name: second_button_text
+            label: نص زر الاتصال
+            type: string
+          - name: background_image
+            label: صورة الواجهة (اختياري)
+            type: image
+      - name: about
+        label: من نحن
+        type: object
+        fields:
+          - name: visible
+            label: إظهار هذا القسم
+            type: boolean
+          - name: heading
+            label: عنوان القسم
+            type: string
+          - name: paragraph1
+            label: الفقرة الأولى
+            type: text
+          - name: paragraph2
+            label: الفقرة الثانية
+            type: text
+          - name: values
+            label: خانات القيم (إضافة وحذف وترتيب)
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: '{title}'
+            fields:
+              - name: title
+                label: عنوان الخانة
+                type: string
+              - name: description
+                label: وصف الخانة
+                type: text
+      - name: services
+        label: الخدمات
+        type: object
+        fields:
+          - name: visible
+            label: إظهار قسم الخدمات
+            type: boolean
+          - name: heading
+            label: عنوان الخدمات
+            type: string
+          - name: subtitle
+            label: الوصف تحت العنوان
+            type: text
+          - name: cards
+            label: خانات الخدمات (إضافة وحذف وترتيب)
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: '{title}'
+            fields:
+              - name: title
+                label: اسم الخدمة
+                type: string
+              - name: description
+                label: وصف الخدمة
+                type: text
+      - name: extra_sections
+        label: أقسام إضافية (إضافة وحذف وترتيب)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+          - name: visible
+            label: إظهار القسم
+            type: boolean
+          - name: title
+            label: عنوان القسم
+            type: string
+          - name: subtitle
+            label: وصف القسم
+            type: text
+          - name: cards
+            label: خانات هذا القسم
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: '{title}'
+            fields:
+              - name: title
+                label: عنوان الخانة
+                type: string
+              - name: description
+                label: وصف الخانة
+                type: text
+              - name: image
+                label: صورة الخانة (اختياري)
+                type: image
+      - name: contact
+        label: بيانات التواصل
+        type: object
+        fields:
+          - name: visible
+            label: إظهار قسم التواصل
+            type: boolean
+          - name: heading
+            label: عنوان القسم
+            type: string
+          - name: subtitle
+            label: وصف القسم
+            type: text
+          - name: whatsapp_number
+            label: رقم واتساب بصيغة دولية دون + (مثل 9665xxxxxxxx)
+            type: string
+          - name: phone_number
+            label: رقم الاتصال بصيغة دولية دون +
+            type: string
+          - name: email
+            label: البريد الإلكتروني
+            type: string
+          - name: whatsapp_description
+            label: وصف التواصل عبر واتساب
+            type: text
+          - name: phone_description
+            label: وصف الاتصال الهاتفي
+            type: text
+          - name: email_description
+            label: وصف التواصل عبر البريد
+            type: text
+          - name: form_visible
+            label: إظهار نموذج إرسال الطلب عبر واتساب
+            type: boolean
+          - name: form_heading
+            label: عنوان نموذج الطلب
+            type: string
+          - name: form_services
+            label: اختيارات نموذج الطلب
+            type: string
+            list: true
+      - name: footer
+        label: أسفل الموقع
+        type: object
+        fields:
+          - name: legal
+            label: بيانات المنشأة والترخيص (تحقق من صحتها)
+            type: text
