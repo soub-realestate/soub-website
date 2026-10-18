@@ -94,7 +94,73 @@ footer .footer-legal-value{font-weight:700;color:var(--main);direction:ltr;unico
 footer .footer-legal-note{font-size:16px;line-height:1.9;padding:7px 0;overflow-wrap:anywhere}
 footer .footer-copyright{font-size:14px;line-height:1.85;color:var(--mute);margin-top:8px}
 @media(max-width:700px){footer .footer-legal{width:100%}footer .footer-legal-row{gap:12px;flex-wrap:wrap}footer .footer-legal-name{font-size:18px}}
-</style><meta content="light" name="color-scheme"/></head>
+</style><meta content="light" name="color-scheme"/><style id="soub-mobile-only-css">
+/* تحسين الهاتف فقط لصوب العقارية - لا ينطبق على الكمبيوتر أو الأجهزة بعرض أكبر من 700px. */
+@media screen and (max-width:700px) {
+  html { scroll-padding-top: 118px; }
+  body { overflow-x: clip; font-size: 16px; }
+  .wrap { width:100%; max-width:100%; padding-inline: 18px; }
+
+  /* ترويسة الجوال: الشعار والواتساب في الصف الأول، وروابط الأقسام في صف ثانٍ. */
+  header .wrap { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-block:11px; }
+  header .logo { margin:0; flex:0 0 auto; }
+  header .lg { height:46px; }
+  header .btn { margin:0; padding:9px 14px; min-height:44px; font-size:14px; border-radius:10px; }
+  header .btn svg { width:19px; height:19px; }
+  header nav { display:flex; order:3; margin:0; flex:0 0 100%; width:100%; justify-content:center; flex-wrap:wrap; gap:clamp(14px,5vw,24px); border-top:1px solid var(--line); padding-top:9px; }
+  header nav a { font-size:14px; padding:3px 1px; white-space:nowrap; }
+
+  /* واجهة قابلة للقراءة: نص مناسب وأزرار بعرض واضح. */
+  .hero { padding:46px 0 55px; }
+  .hero svg.bg { width:240px; inset-inline-start:-65px; bottom:-35px; }
+  .hero h1 { font-size:clamp(32px,8.5vw,42px); max-width:none; line-height:1.4; margin:10px 0 14px; overflow-wrap:break-word; }
+  .hero p { font-size:16px; line-height:1.9; max-width:none; margin-bottom:22px; }
+  .cta { display:grid; grid-template-columns:1fr; gap:10px; }
+  .cta .btn { min-height:48px; width:100%; padding:10px 14px; font-size:15px; text-align:center; }
+
+  /* الأقسام والبطاقات: عمود واحد على الهاتف، دون تغيير تخطيط الكمبيوتر. */
+  section { padding:43px 0; }
+  h2 { font-size:26px; line-height:1.45; margin-bottom:8px; }
+  .sub { font-size:15.5px; line-height:1.85; margin-bottom:20px; }
+  .about { display:grid; grid-template-columns:minmax(0,1fr); gap:20px; }
+  .about p { font-size:16px; line-height:1.95; }
+  .vals { gap:9px; }
+  .vals div { padding:14px 16px; font-size:15px; }
+  .g, #services .g, #custom-sections .g, #contact .g.ch { display:grid; grid-template-columns:minmax(0,1fr); gap:12px; }
+  .box { min-width:0; padding:19px 18px; border-radius:15px; }
+  .box h3 { font-size:18px; line-height:1.5; }
+  .box p { font-size:15px; line-height:1.9; overflow-wrap:anywhere; }
+  .num { width:36px; height:36px; margin-bottom:9px; }
+  #contact .ch .box a { display:block; min-height:92px; }
+  #contact .ch b { font-size:16px !important; line-height:1.65; overflow-wrap:anywhere; word-break:break-word; }
+  #contact .ch p { font-size:14.5px; }
+
+  /* النموذج: كامل عرض شاشة الهاتف مع حقول وأزرار مريحة للمس. */
+  #contact .form { width:100%; max-width:none !important; margin-top:16px; display:grid; gap:12px; padding:20px 17px; }
+  #contact .form h3 { font-size:19px; }
+  #contact .form input, #contact .form select, #contact .form textarea { min-width:0; min-height:48px; padding:12px 13px; border-radius:10px; font-size:16px; }
+  #contact .form textarea { min-height:116px; resize:vertical; }
+  #contact .form button { width:100%; min-height:50px; font-size:15px; }
+
+  /* التذييل المحسّن نفسه، مع ضبط الحواف على الهاتف فقط. */
+  footer { padding:28px 0 96px; }
+  footer .footer-legal { width:100%; max-width:100%; }
+  footer .footer-legal-row { gap:12px; }
+  footer .footer-legal-label { min-width:0; }
+  footer .footer-legal-value { white-space:nowrap; }
+  .fab { width:54px; height:54px; inset-inline-end:14px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); }
+  .fab svg { width:28px; height:28px; }
+}
+@media screen and (max-width:360px) {
+  .wrap { padding-inline:14px; }
+  header .wrap { gap:8px; }
+  header .lg { height:40px; }
+  header nav a { font-size:13px; }
+  .hero h1 { font-size:30px; }
+  footer .footer-legal-row { font-size:15px; }
+}
+</style>
+</head>
 <body>
 <svg height="0" style="position:absolute" width="0"><symbol id="wa" viewbox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11 19.8L3 29l6.4-2A13 13 0 1 0 16 3zm0 2.4A10.6 10.6 0 1 1 9.8 24.6l-.5-.3-3.7 1.2 1.2-3.6-.3-.5A10.6 10.6 0 0 1 16 5.4zm-4 5.3c-.3 0-.7.1-1 .5-.4.4-1.300 1.300-1.300 3.100s1.300 3.600 1.500 3.800c.2.200 2.600 4.100 6.400 5.600 3.200 1.200 3.800 1 4.500.9.700-.1 2.200-.9 2.500-1.800.3-.9.3-1.600.2-1.800-.1-.2-.4-.3-.8-.5s-2.200-1.100-2.500-1.200c-.3-.1-.6-.2-.8.200-.2.400-.9 1.200-1.100 1.400-.2.200-.4.300-.8.100-.4-.2-1.600-.6-3-1.900-1.100-1-1.900-2.200-2.100-2.600-.2-.4 0-.6.200-.8l.6-.7c.2-.2.200-.4.400-.6.100-.3.100-.5 0-.7l-1.100-2.700c-.3-.7-.6-.6-.8-.6z"></path></symbol></svg>
 <header><div class="wrap">
