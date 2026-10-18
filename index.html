@@ -83,6 +83,17 @@ footer{background:var(--band);border-top:1px solid var(--line);padding:22px 0 90
 #contact .form.is-hidden{display:none}
 [hidden]{display:none !important}
 .site-config-error{display:none}
+
+/* تحسين عرض التذييل فقط: مقاسات قابلة للقراءة وترتيب بيانات المنشأة */
+footer .footer-layout{display:flex;flex-direction:column;align-items:flex-start}
+footer .footer-legal{width:min(100%,480px);margin:12px 0 10px;color:var(--ink)}
+footer .footer-legal-name{font-size:18px;line-height:1.85;font-weight:700;padding:0 0 10px;overflow-wrap:anywhere}
+footer .footer-legal-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--line);font-size:16px;line-height:1.9}
+footer .footer-legal-label{font-weight:500;color:var(--mute)}
+footer .footer-legal-value{font-weight:700;color:var(--main);direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+footer .footer-legal-note{font-size:16px;line-height:1.9;padding:7px 0;overflow-wrap:anywhere}
+footer .footer-copyright{font-size:14px;line-height:1.85;color:var(--mute);margin-top:8px}
+@media(max-width:700px){footer .footer-legal{width:100%}footer .footer-legal-row{gap:12px;flex-wrap:wrap}footer .footer-legal-name{font-size:18px}}
 </style><meta content="light" name="color-scheme"/></head>
 <body>
 <svg height="0" style="position:absolute" width="0"><symbol id="wa" viewbox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11 19.8L3 29l6.4-2A13 13 0 1 0 16 3zm0 2.4A10.6 10.6 0 1 1 9.8 24.6l-.5-.3-3.7 1.2 1.2-3.6-.3-.5A10.6 10.6 0 0 1 16 5.4zm-4 5.3c-.3 0-.7.1-1 .5-.4.4-1.300 1.300-1.300 3.100s1.300 3.600 1.500 3.800c.2.200 2.600 4.100 6.400 5.600 3.200 1.200 3.800 1 4.500.9.700-.1 2.200-.9 2.500-1.800.3-.9.3-1.600.2-1.800-.1-.2-.4-.3-.8-.5s-2.200-1.100-2.500-1.200c-.3-.1-.6-.2-.8.200-.2.400-.9 1.200-1.100 1.400-.2.200-.4.300-.8.100-.4-.2-1.600-.6-3-1.900-1.100-1-1.900-2.200-2.100-2.600-.2-.4 0-.6.200-.8l.6-.7c.2-.2.200-.4.400-.6.100-.3.100-.5 0-.7l-1.100-2.700c-.3-.7-.6-.6-.8-.6z"></path></symbol></svg>
@@ -136,9 +147,13 @@ footer{background:var(--band);border-top:1px solid var(--line);padding:22px 0 90
 </div>
 </div></section>
 </main>
-<footer><div class="wrap"><span aria-label="صوب العقارية" class="lg sm" role="img"></span>© صوب العقارية. جميع الحقوق محفوظة.<div style="margin-top:6px;white-space:pre-line;overflow-wrap:anywhere;line-height:1.9" dir="rtl">مؤسسة صوب المسكن العقارية
-رخصة فال: 1200047284
-س.ت: 7025077582</div></div></footer>
+<footer><div class="wrap footer-layout"><span aria-label="صوب العقارية" class="lg sm" role="img"></span>
+<div class="footer-legal" dir="rtl" aria-label="بيانات المنشأة النظامية">
+<div class="footer-legal-name">مؤسسة صوب المسكن العقارية</div>
+<div class="footer-legal-row"><span class="footer-legal-label">رخصة فال</span><bdi class="footer-legal-value" dir="ltr">1200047284</bdi></div>
+<div class="footer-legal-row"><span class="footer-legal-label">السجل التجاري (س.ت)</span><bdi class="footer-legal-value" dir="ltr">7025077582</bdi></div>
+</div>
+<div class="footer-copyright">© صوب العقارية. جميع الحقوق محفوظة.</div></div></footer>
 <a aria-label="تواصل عبر واتساب" class="fab" href="#contact"><svg viewbox="0 0 32 32"><use href="#wa"></use></svg></a>
 <script defer="True" src="/app.js"></script></body>
 </html>

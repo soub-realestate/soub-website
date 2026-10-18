@@ -65,15 +65,23 @@ function updateContact(d){const root=$('#contact');if(!root)return;root.hidden=d
   text($('h2',root),d.heading);text($('p.sub',root),d.subtitle);text($('#contact .form h3'),d.form_heading);
 }
 function updateFooter(d){
- // Replace the entire legacy legal-details container, not just a text node.
- // Previous markup contains <bdi> elements whose old numbers persisted.
- const legalBox=$('footer .wrap > div');
- if(!legalBox)return;
- legalBox.textContent=typeof d?.legal==='string'?d.legal.trim():'';
- legalBox.style.whiteSpace='pre-line';
- legalBox.style.overflowWrap='anywhere';
- legalBox.style.lineHeight='1.9';
- legalBox.setAttribute('dir','rtl');
+ // بيانات المنشأة من Pages CMS: نعرض كل سطر مرة واحدة دون إدراج HTML من المستخدم.
+ const legalBox=$('footer .footer-legal');
+ if(!legalBox || typeof d?.legal!=='string')return;
+ const lines=d.legal.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+ legalBox.replaceChildren();
+ lines.forEach((line,index)=>{
+   if(index===0){legalBox.append(el('div','footer-legal-name',line));return;}
+   const parts=line.match(/^([^:：]+)[:：]\s*(.+)$/);
+   if(!parts){legalBox.append(el('div','footer-legal-note',line));return;}
+   const row=el('div','footer-legal-row');
+   let label=parts[1].trim();
+   if(label==='س.ت' || label==='س.ت.' || label==='السجل التجاري')label='السجل التجاري (س.ت)';
+   row.append(el('span','footer-legal-label',label));
+   const value=el('bdi','footer-legal-value',parts[2].trim());
+   value.setAttribute('dir','ltr');
+   row.append(value);legalBox.append(row);
+ });
 }
 async function load(){try{const res=await fetch('/data/site.json',{cache:'no-store'});
  if(!res.ok)throw Error('تعذر تحميل إعدادات الموقع');
