@@ -64,10 +64,16 @@ function updateExtras(sections){const parent=$('#custom-sections');if(!parent)re
 function updateContact(d){const root=$('#contact');if(!root)return;root.hidden=d.visible===false;
   text($('h2',root),d.heading);text($('p.sub',root),d.subtitle);text($('#contact .form h3'),d.form_heading);
 }
-function updateFooter(d){const footer=$('footer');if(!footer||!d?.legal)return;
- // Only touch matching disclaimer text, preserving logos and original design.
- const walker=document.createTreeWalker(footer,NodeFilter.SHOW_TEXT);let n;
- while((n=walker.nextNode())){if(n.textContent.includes('ترخيص فال')){n.textContent=d.legal;break;}}
+function updateFooter(d){
+ // Replace the entire legacy legal-details container, not just a text node.
+ // Previous markup contains <bdi> elements whose old numbers persisted.
+ const legalBox=$('footer .wrap > div');
+ if(!legalBox)return;
+ legalBox.textContent=typeof d?.legal==='string'?d.legal.trim():'';
+ legalBox.style.whiteSpace='pre-line';
+ legalBox.style.overflowWrap='anywhere';
+ legalBox.style.lineHeight='1.9';
+ legalBox.setAttribute('dir','rtl');
 }
 async function load(){try{const res=await fetch('/data/site.json',{cache:'no-store'});
  if(!res.ok)throw Error('تعذر تحميل إعدادات الموقع');
